@@ -1,3 +1,46 @@
 body {
+	font-family: 'Open Sans','Helvetica Neue', Helvetica, Arial, sans-serif!important;
+    font-size: 14px;
+    line-height: 1.42857143;
 	padding-bottom: 40px;
+	background-color: rgb(241, 242, 246);
 }
+
+/**
+ * Remove border from navbar
+ */
+.navbar {
+
+    border-radius: 0px;
+}
+
+.navbar-inverse {
+	background-color: #fff;
+    border: none;
+    -webkit-box-shadow: 0 1px 1px 0 rgba(0,0,0,.05);
+    box-shadow: 0 1px 1px 0 rgba(0,0,0,.05);
+    height: 70px;
+
+    font-size: 1.09em;
+    padding-top: 8px;
+}
+
+a, a:hover, a:focus{
+  color: #3a6d99!important;
+  text-decoration: none!important; /* no underline */
+  cursor: pointer!important;
+}
+
+.underline {
+	color:#3a6d99;
+	border-bottom: 2px solid transparent;
+	padding: 6px 0px 6px 0px;
+}
+
+.underline:hover {
+	border-bottom-width: 5px;
+	border-bottom: solid 2px #6ba2e6;
+	transition: border-color .218s;
+
+}
+

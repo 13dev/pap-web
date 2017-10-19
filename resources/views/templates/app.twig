@@ -3,9 +3,13 @@
 <head>
 	<meta charset="utf-8">
 	<title>{% block title %}Askpit | Ask - it! :) {% endblock %}</title>
+	
+	<link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,800,700,400italic,600italic,700italic,800italic,300italic" rel="stylesheet" type="text/css">
 
 	<link href="//netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="{{ base_url() }}/css/bootflat.min.css">
 	<link rel="stylesheet" href="{{ base_url() }}/css/app.css">
+
 </head>
 <body>
 	<!-- navbar -->
@@ -16,7 +20,13 @@
 	</div>
 
 	<!-- Javascript -->
+	<!-- jquery -->
 	<script src="//code.jquery.com/jquery-2.2.4.min.js"></script>
 	<script src="//netdna.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+	<!-- bootflat -->
+	<script src="{{ base_url() }}/js/icheck.min.js"></script>
+	<script src="{{ base_url() }}/js/jquery.fs.selecter.min.js"></script>
+	<script src="{{ base_url() }}/js/jquery.fs.stepper.min.js"></script>
 </body>
 </html>
