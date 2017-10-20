@@ -9,14 +9,15 @@ $app = new \Slim\App([
 		'displayErrorDetails' => true,
         //'addContentLengthHeader' => false,
         'db' => [
-            'driver' => 'mysql',
-            'host' => 'localhost',
-            'username' => 'root',
-            'database' => 'askpit',
-            'password' => '',
-            'charset' => 'utf8',
-            'collation' => 'utf8_unicode_ci',
-            'prefix' => '',
+
+            'driver'        => 'mysql',
+            'host'          => 'localhost',
+            'username'      => 'root',
+            'database'      => 'askpit',
+            'password'      => '',
+            'charset'       => 'utf8',
+            'collation'     => 'utf8_unicode_ci',
+            'prefix'        => '',
         ]
 	],
     
@@ -39,13 +40,16 @@ $container['db'] = function($container) use ($capsule) {
 };
 
 $container['view'] = function($container) {
+    
     $view = new \Slim\Views\Twig(__DIR__ . '/../resources/views', [
         'cache' => false,
     ]);
+
     $view->addExtension(new \Slim\Views\TwigExtension(
         $container->router,
         $container->request->getUri()
     ));
+
     return $view;
 };
 
