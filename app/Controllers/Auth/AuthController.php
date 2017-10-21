@@ -13,6 +13,13 @@ use Respect\Validation\Validator as v;
 class AuthController extends Controller
 {
 
+	function getSignOut($request, $response)
+	{
+		$this->auth->logout();
+
+		return $response->withRedirect($this->router->pathFor('home'));
+	}
+	
 	function getSignIn($request, $response)
 	{
 		//return the view
