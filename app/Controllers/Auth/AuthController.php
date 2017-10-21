@@ -17,9 +17,11 @@ class AuthController extends Controller
 	{
 		$this->auth->logout();
 
+		$this->container->flash->addMessage('nav-info', 'Esperamos te ver por ai!');
+
 		return $response->withRedirect($this->router->pathFor('home'));
 	}
-	
+
 	function getSignIn($request, $response)
 	{
 		//return the view
@@ -37,6 +39,8 @@ class AuthController extends Controller
 			return $response->withRedirect($this->router->pathFor('auth.signin'));
 		}
 
+		$this->container->flash->addMessage('nav-info', 'Bem-vindo!');
+		
 		return $response->withRedirect($this->router->pathFor('home'));
 	}
 

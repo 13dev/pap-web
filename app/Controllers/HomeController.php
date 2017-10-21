@@ -12,7 +12,6 @@ class HomeController extends Controller
 
 	function index($request, $response)
 	{
-
 		$this->view->render($response, 'home.twig');
 	}
 }

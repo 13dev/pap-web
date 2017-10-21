@@ -10,12 +10,14 @@
 	<link rel="stylesheet" href="{{ base_url() }}/css/bootflat.min.css">
 	<link rel="stylesheet" href="{{ base_url() }}/css/app.css">
 
+	<script src="https://use.fontawesome.com/aea4645b20.js"></script>
+
 </head>
 <body>
 	<!-- navbar -->
 	{% include 'templates/partials/navigation.twig' %}
 
-	<div class="container">
+	<div class="container" style="padding-top: 30px;">
 		{% block content %}{% endblock %}
 	</div>
 
@@ -28,5 +30,18 @@
 	<script src="{{ base_url() }}/js/icheck.min.js"></script>
 	<script src="{{ base_url() }}/js/jquery.fs.selecter.min.js"></script>
 	<script src="{{ base_url() }}/js/jquery.fs.stepper.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			//if div exists
+			if(document.getElementById("nav-message") !== null)
+			{
+				/**
+				 * Fade out the message
+				 */
+				$("#nav-message").delay(3500).fadeOut("slow");
+			}
+			
+		});
+	</script>
 </body>
 </html>
