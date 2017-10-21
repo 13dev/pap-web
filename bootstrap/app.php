@@ -80,6 +80,10 @@ $container['HomeController'] = function ($container) {
     return new \App\Controllers\HomeController($container);
 };
 
+$container['PasswordController'] = function ($container) {
+    return new \App\Controllers\Auth\PasswordController($container);
+};
+
 $container['validator'] = function ($container) {
     return new \App\Validation\Validator;
 };

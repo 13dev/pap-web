@@ -19,7 +19,12 @@
         <ul class="nav navbar-nav navbar-right">
             {% if auth.check %}
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle underline" data-toggle="dropdown" role="button" aria-expanded="false"> {{ auth.user.name }} <span class="caret"></span></a>
+                    <a href="#" class="dropdown-toggle btn-profile" data-toggle="dropdown" role="button" aria-expanded="false" >
+                        {{ auth.user.name }} 
+                        <img class="nav-userimg" src="https://api.adorable.io/avatars/200/1ert.png" alt="Img">
+                        <span class="caret" style="margin-left: 40px;"></span>
+                         
+                    </a>
                     <ul class="dropdown-menu" role="menu">
                         <li><a href="#">Action</a></li>
                         <li><a href="#">Another action</a></li>

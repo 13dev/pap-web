@@ -25,15 +25,16 @@ body {
 .navbar-default .navbar-nav>.open>a:focus, 
 .navbar-default .navbar-nav>.open>a:hover
 {
-  color:#434A54!important;
+  color:#434A54;
   background-color: #fff;
 }
 
 .navbar-default .navbar-nav>li>a:focus, 
 .navbar-default .navbar-nav>li>a:hover
 {
-    color:#434A54!important;
+    color:#434A54;
 }
+
 
 a, a:hover, a:focus {
   color: #F5F7FA!important;
@@ -61,12 +62,43 @@ a, a:hover, a:focus {
     opacity: 0.8;
 }
 
+#nav-message:hover {
+    opacity: 1;
+}
+
 #inner-message {
     color: #F5F7FA;
     margin: 0 auto;
     border-radius: 0;
     padding: 8px;
-    font-size: 16px;
+}
+
+/**
+ * User img in navbar!
+ * 40x40
+ */
+
+.nav-userimg {
+    position: absolute;
+    margin-top: -6px;
+    border-radius: 50%;
+    width: 33px;
+    height: 33px;
+}
+
+.btn-profile {
+  color: #3BAFDA!important;
+  border: 1px solid #3BAFDA!important;
+  padding: 10px 20px 10px 20px!important;
+  margin-top: 5px;
+  border-radius: 20px;
+}
+
+.btn-profile:hover,.btn-profile:focus {
+  background-color: #3bafda!important;
+  border: 1px solid #5D9CEC!important;
+  color: #F5F7FA!important;
+
 }
 
 

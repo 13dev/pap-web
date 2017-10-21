@@ -36,11 +36,12 @@ class AuthController extends Controller
 		);
 
 		if(!$auth){
+			$this->container->flash->addMessage('nav-error', 'Could not sign you in with those details.');
 			return $response->withRedirect($this->router->pathFor('auth.signin'));
 		}
 
 		$this->container->flash->addMessage('nav-info', 'Bem-vindo!');
-		
+
 		return $response->withRedirect($this->router->pathFor('home'));
 	}
 
