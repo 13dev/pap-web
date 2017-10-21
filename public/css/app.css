@@ -58,7 +58,7 @@ a, a:hover, a:focus {
 
 .underline:hover {
 	border-bottom: solid 2px #6ba2e6;
-	transition: border-color .218s;
+	transition: border-color .318s;
 }
 
 
