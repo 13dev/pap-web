@@ -28,7 +28,13 @@ $app->group('/auth', function () use($container) {
 		//Change password
 		$this->get('/password/change', 'PasswordController:getChangePassword')->setName('auth.password.change');
 		$this->post('/password/change', 'PasswordController:postChangePassword');
-		
+
 	})->add(new AuthMiddleware($container));
+
+});
+
+$app->group('/p', function () use($container) {
+
+	$this->get('/{id:[0-9]+}', 'ProfileController:getProfile')->setName('profile.get');
 
 });

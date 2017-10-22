@@ -76,12 +76,24 @@ $container['view'] = function($container) {
     return $view;
 };
 
+//TODO: Active in production
+//Override the default Not Found Handler
+//$container['notFoundHandler'] = function ($container) {
+//    return function ($request, $response) use ($container) {
+//        return $container['view']->render($response->withStatus(404), 'error/404.twig');
+//    };
+//};
+
 $container['HomeController'] = function ($container) {
     return new \App\Controllers\HomeController($container);
 };
 
 $container['PasswordController'] = function ($container) {
     return new \App\Controllers\Auth\PasswordController($container);
+};
+
+$container['ProfileController'] = function ($container) {
+    return new \App\Controllers\ProfileController($container);
 };
 
 $container['validator'] = function ($container) {
