@@ -1,4 +1,19 @@
 {% extends 'templates/app.twig' %}
 {% block content %}
-    hello!
+<div class="row" style="text-align:center;">
+	<div class="well" style="padding: 20px; height:100%;">
+	    <h2 style="letter-spacing: 10px;">ASK&nbsp;&&nbsp;ANSWER</h2>
+		<p class="lead">Stay connected to friends with the askpit mobile app. Available for Android.</p>
+		<div style="margin: 30px;">
+			<a class="btn btn-info btn-lg btn-android" style="margin-right:20px;" href="{{ path_for('auth.signup') }}">
+				<img src="{{ base_url() }}/img/android.png" width="40" />
+				<text>ASKPIT</text>
+			</a>
+			<a class="btn btn-primary btn-lg btn-home" href="{{ path_for('auth.signup') }}">
+				<img src="{{ base_url() }}/img/sign-up.png" width="40" />
+				<text>SIGN UP</text>
+			</a>
+		</div>
+	</div>
+</div>
 {% endblock %}

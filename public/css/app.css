@@ -2,15 +2,21 @@ body {
   font-family: 'Open Sans','Helvetica Neue', Helvetica, Arial, sans-serif!important;
   font-size: 14px;
   line-height: 1.42857143;
-  padding-bottom: 40px;
   background-color: rgb(241, 242, 246);
+
+  background: url(../img/~background.png);
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 
 .navbar-default {
 	background-color: #fff;
   border: none;
   -webkit-box-shadow: 0 1px 1px 0 rgba(0,0,0,.05);
-  box-shadow: 0 1px 1px 0 rgba(0,0,0,.05);
+  box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.45);
+  border-bottom: 2px solid rgba(59, 175, 218, 0.55);
   height: 70px;
 
   font-size: 1.09em;
@@ -80,10 +86,11 @@ a, a:hover, a:focus {
 
 .nav-userimg {
     position: absolute;
-    margin-top: -6px;
+    margin-top: -5px;
     border-radius: 50%;
-    width: 33px;
-    height: 33px;
+    width: 30px;
+    height: 30px;
+    border: 1px solid;
 }
 
 .btn-profile {
@@ -95,12 +102,42 @@ a, a:hover, a:focus {
 }
 
 .btn-profile:hover,.btn-profile:focus {
+  transition: background-color .418s;
+  transition: color .318s;
   background-color: #3bafda!important;
   border: 1px solid #5D9CEC!important;
   color: #F5F7FA!important;
 
 }
 
+.btn-android {
+    font-size: 24px;
+    font-weight: 600;
+    letter-spacing: 3px;
+}
 
+.btn-android > text {
+    position: relative;
+    top: 2px;
+}
 
+.btn-home {
+    font-size: 24px;
+    font-weight: 600;
+    letter-spacing: 3px;
+}
 
+.btn-home > text {
+    position: relative;
+    top: 2px;
+}
+
+.footer {
+  margin-top: 40px;
+  box-shadow: 0 -1px 5px 0 rgba(0, 0, 0, 0.85);
+}
+
+.logo {
+  margin-top: -13px;
+  height: 80px;
+}

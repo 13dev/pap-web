@@ -9,6 +9,7 @@
 	<link href="//netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="{{ base_url() }}/css/bootflat.min.css">
 	<link rel="stylesheet" href="{{ base_url() }}/css/app.css">
+	<link rel="stylesheet" href="{{ base_url() }}/css/anim.css">
 
 	<script src="https://use.fontawesome.com/aea4645b20.js"></script>
 
@@ -20,6 +21,10 @@
 	<div class="container" style="padding-top: 30px;">
 		{% block content %}{% endblock %}
 	</div>
+		
+	<!-- footer -->
+	{% include 'templates/partials/footer.twig' %}
+
 
 	<!-- Javascript -->
 	<!-- jquery -->
