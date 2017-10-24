@@ -192,12 +192,30 @@ a:focus
 
 .avatar > img {
     border-radius: 50%;
-    border: 1px solid;
+    border: 2px solid #3BAFDA;
     max-height: 100px;
 }
 
-.profile > .info {
+.info {
   min-height: 50px;
-  background-color: #6c6c6c;
+  background-color: #E6E9ED;
   width: 100%;
+  border-top: 2px solid #3BAFDA;
+}
+
+.info > .row {
+    margin-left:20%;
+}
+
+.info > .row > .col-md-4 > img {
+  max-height: 33px;
+  min-height: 33px;
+  margin-right: 10px;
+  margin-top: -10px;
+  display: inline-block;
+}
+
+.info > .row > .col-md-4 > h4 {
+  display: inline-block;
+  font-size: 16px;
 }

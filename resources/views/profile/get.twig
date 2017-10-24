@@ -1,20 +1,56 @@
 {% extends 'templates/app.twig' %}
 {% block content %}
-    <div class="row">
-    	<div class="col-md-12">
-            <div class="well">
-                <div class="profile">
-                    <div class="cover">
-                        <img src="http://placehold.it/1120x250" class="img-rounded img-responsive">
-                    </div>
-                    <div class="avatar">
-                        <img src="http://placehold.it/200x200" class="img-rounded img-responsive">
-                    </div>
-                    <div class="info">
+<div class="row">
+	<div class="col-md-12">
+        <div class="well">
+            <div class="profile">
+            <div style="border: 0px solid #3BAFDA">
+                <div class="cover">
+                    <img src="http://placehold.it/1120x250" class="img-rounded img-responsive">
+                </div>
+                <div class="avatar">
+                    <img src="https://api.adorable.io/avatars/200/1rr" class="img-rounded img-responsive">
+                </div>
+                <div style=" position: absolute; margin-top: -40px; margin-left: 140px;">
+                    <h4>Leonardo Oliveira</h4>
+                </div>
+                <div class="info">
+                    <div class="row">
+                        <div class="col-sm-12 col-md-4">
+                            <img src="{{ base_url() }}/img/publication.png" class="img-responsive">
+                            <h4>4 PUBLICAÇÕES</h4>
+                        </div>
+                        <div class="col-sm-12 col-md-4">
+                            <img src="{{ base_url() }}/img/like.png" class="img-responsive">
+                            <h4>10 GOSTOS</h4>
+                        </div>
+                        <div class="col-sm-12 col-md-4">
+                            <img src="{{ base_url() }}/img/followers.png" class="img-responsive">
+                            <h4>5 SEGUIDORES</h4>
+                        </div>
                     </div>
                 </div>
-                
             </div>
-    	</div>
-    </div>
+                <div class="content">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="profile-detail">
+                                <!-- profile detail -->
+                                <div class="jumbotron">
+                                  <div class="jumbotron-contents">
+                                    <h2>Leonardo Oliveira</h2>
+                                    <p>This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+                                  </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <!-- content -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+	</div>
+</div>
 {% endblock %}
