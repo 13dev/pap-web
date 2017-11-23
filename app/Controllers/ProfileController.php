@@ -12,12 +12,18 @@ class ProfileController extends Controller
 
 	function getProfile($request, $response, $args)
 	{
-		if(!User::where('id', $args['id'])->exists()){
+		if(!User::where('username', $args['username'])->exists()){
 			return $this->view->render($response, 'error/404.twig');
 		}
 
-		$user = User::find($args['id']);
+		$user = User::where('username', $args['username'])->first();
 
-		return $this->view->render($response, 'profile/get.twig', [ 'user' => $user ]);
+
+		$questions = $user->questions()->get();
+
+		return $this->view->render($response, 'profile/get.twig', [
+		    'user' => $user,
+            'questions' => $questions,
+        ]);
 	}
 }
