@@ -35,6 +35,10 @@ $app->group('/auth', function () use($container) {
 
 $app->group('/p', function () use($container) {
 
-	$this->get('/{id:[0-9]+}', 'ProfileController:getProfile')->setName('profile.get');
+	$this->get('/{username}', 'ProfileController:getProfile')->setName('profile.get');
+});
 
+$app->group('/q', function () use($container) {
+    $this->post('/insert', 'QuestionController:setQuestion')->setName('q.insert');
+    $this->get('/get', 'QuestionController:getQuestion')->setName('q.get');
 });

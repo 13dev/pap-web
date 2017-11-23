@@ -6,39 +6,39 @@
             <div class="profile">
             <div style="border: 0px solid #3BAFDA">
                 <div class="cover">
-                    <img src="http://placehold.it/1120x250" class="img-rounded img-responsive">
+                    <img src="{{ base_url() }}/img/nocover.png" class="img-rounded img-responsive">
                 </div>
                 <div class="avatar">
-                    <img src="https://api.adorable.io/avatars/200/1rr" class="img-rounded img-responsive">
+                    <img src="{{ base_url() }}/img/noavatar.png" class="img-rounded img-responsive">
                 </div>
                 <div style=" position: absolute; margin-top: -40px; margin-left: 140px;">
-                    <h4>Leonardo Oliveira</h4>
+                    <h4>{{ user.firstname }} {{user.lastname }}</h4>
                 </div>
                 <div class="info">
                     <div class="row">
                         <div class="col-sm-12 col-md-4">
                             <img src="{{ base_url() }}/img/publication.png" class="img-responsive">
-                            <h4>4 PUBLICAÇÕES</h4>
+                            <h4>{{ user.points }} PUBLICAÇÕES</h4>
                         </div>
                         <div class="col-sm-12 col-md-4">
                             <img src="{{ base_url() }}/img/like.png" class="img-responsive">
-                            <h4>10 GOSTOS</h4>
+                            <h4>{{ user.likes }} GOSTOS</h4>
                         </div>
                         <div class="col-sm-12 col-md-4">
                             <img src="{{ base_url() }}/img/followers.png" class="img-responsive">
-                            <h4>5 SEGUIDORES</h4>
+                            <h4>{{ user.followers }} SEGUIDORES</h4>
                         </div>
                     </div>
                 </div>
             </div>
-                <div class="content">
+                <div class="content" style="background-color: #e6e9ed;">
                     <div class="row">
                         <div class="col-md-4">
                             <div class="profile-detail">
                                 <!-- profile detail -->
-                                <div class="jumbotron">
-                                  <div class="jumbotron-contents">
-                                    <h2>Leonardo Oliveira</h2>
+                                <div class="well-lg">
+                                  <div>
+                                    <h2>{{ user.firstname }} {{user.lastname }}</h2>
                                     <p>This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
                                   </div>
                                 </div>
@@ -46,6 +46,62 @@
                         </div>
                         <div class="col-md-8">
                             <!-- content -->
+                            <div id="send-question">
+                                <div class="well-lg">
+                                    <h3 style="text-align: center;">Make a simple Question :)</h3>
+                                    <div class="row">
+                                        <div class="col-md-10">
+                                            <div class="form-group {{ validationErrors.question ? 'has-error has-feedback' : '' }}">
+                                                <input name="question" id="question" class="form-control" />
+                                                {% if validationErrors.question %}
+                                                    <span class="help-block">{{ validationErrors.question | first }}</span>
+                                                    <span class="glyphicon glyphicon-remove form-control-feedback"></span>
+                                                {% endif %}
+                                            </div>
+                                            <div style="">
+                                                <label class="toggle">
+                                                    <input type="checkbox" id="toggle-hidden" {% if not auth.check %} disabled checked {% endif %}>
+                                                    <span class="handle"></span>
+                                                </label>
+                                                <label for="toggle-hidden" style="font-size: 20px; bottom:2px; position: absolute; margin-left: 10px;">Secret Question</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <button class="btn btn-primary pull-right" id="sendQuestion">Send</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                           <div class="well-lg">
+                               {% if questions %}
+                                   {% for question in questions %}
+                                       <ul class="media-list">
+                                           <li class="media">
+                                               <a class="pull-left" href="#">
+                                                   <img class="media-object img-rounded" src="{{ base_url() }}/img/noavatar.png" style="max-width:50px;">
+                                               </a>
+                                               <div class="media-body">
+                                                   <h4 class="media-heading">
+                                                       {% if question.hidden == '1' %}
+                                                           Questão anonima
+                                                       {% else %}
+                                                           {{ question.user }}
+                                                       {% endif %}
+                                                   </h4>
+                                                   <p>{{ question.created_at }}</p>
+                                                   <p>{{ question.text }}</p>
+                                                   <!-- Nested media object -->
+
+                                                   <!-- Nested media object -->
+
+                                               </div>
+                                           </li>
+                                       </ul>
+                                   {% endfor %}
+                               {% endif %}
+
+
+                           </div>
                         </div>
                     </div>
                 </div>
@@ -53,4 +109,8 @@
         </div>
 	</div>
 </div>
+
+{{ csrf.field | raw }}
+<input type="hidden" name="username" value="{{ user.username }}">
+
 {% endblock %}

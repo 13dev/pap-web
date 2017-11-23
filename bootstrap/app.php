@@ -6,24 +6,10 @@ session_start();
 
 require __DIR__ . '/../vendor/autoload.php';
 
-$app = new \Slim\App([
-	'settings' => [
-		'displayErrorDetails' => true,
-        //'addContentLengthHeader' => false,
-        'db' => [
+//config
+require __DIR__ . '/../app/config.php';
 
-            'driver'        => 'mysql',
-            'host'          => 'localhost',
-            'username'      => 'root',
-            'database'      => 'askpit',
-            'password'      => '',
-            'charset'       => 'utf8',
-            'collation'     => 'utf8_unicode_ci',
-            'prefix'        => '',
-        ]
-	],
-    
-]);
+$app = new \Slim\App($config);
 
 
 $container = $app->getContainer();
@@ -37,78 +23,8 @@ $capsule->addConnection($container['settings']['db']);
 $capsule->setAsGlobal(); // use facades
 $capsule->bootEloquent();
 
-$container['db'] = function($container) use ($capsule) {
-    return $capsule;
-};
-
-$container['auth'] = function ($container) {
-    return new \App\Auth\Auth;
-};
-
-$container['flash'] = function($container) {
-    return new \Slim\Flash\Messages;
-};
-
-$container['view'] = function($container) {
-    
-    $view = new \Slim\Views\Twig(__DIR__ . '/../resources/views', [
-        'cache' => false,
-    ]);
-
-    $view->addExtension(new \Slim\Views\TwigExtension(
-        $container->router,
-        $container->request->getUri()
-    ));
-
-    /**
-     * Add auth var to view
-     */
-    $view->getEnvironment()->addGlobal('auth', [
-        'check' => $container->auth->check(),
-        'user' => $container->auth->user(),
-    ]);
-
-    /**
-     * Add flash message to view
-     */
-    $view->getEnvironment()->addGlobal('flash', $container->flash);
-
-    return $view;
-};
-
-//TODO: Active in production
-//Override the default Not Found Handler
-//$container['notFoundHandler'] = function ($container) {
-//    return function ($request, $response) use ($container) {
-//        return $container['view']->render($response->withStatus(404), 'error/404.twig');
-//    };
-//};
-
-$container['HomeController'] = function ($container) {
-    return new \App\Controllers\HomeController($container);
-};
-
-$container['PasswordController'] = function ($container) {
-    return new \App\Controllers\Auth\PasswordController($container);
-};
-
-$container['ProfileController'] = function ($container) {
-    return new \App\Controllers\ProfileController($container);
-};
-
-$container['validator'] = function ($container) {
-    return new \App\Validation\Validator;
-};
-
-$container['AuthController'] = function ($container) {
-    return new \App\Controllers\Auth\AuthController($container);
-};
-
-$container['csrf'] = function ($container) {
-    return new \Slim\Csrf\Guard;
-};
-
-
+//add services to app
+require __DIR__ . '/../app/services.php';
 
 //Add Middleware to app
 $app->add(new \App\Middleware\ValidationErrorsMiddleware($container));

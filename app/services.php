@@ -1,5 +1,10 @@
 <?php
 
+use App\Twig\TranslatorExtension;
+use Illuminate\Filesystem\Filesystem;
+use Illuminate\Translation\FileLoader;
+use Illuminate\Translation\Translator;
+
 $container['db'] = function() use ($capsule) {
     return $capsule;
 };
@@ -10,6 +15,13 @@ $container['auth'] = function () {
 
 $container['flash'] = function() {
     return new \Slim\Flash\Messages;
+};
+
+$container['translator'] = function ($container) {
+	$loader = new FileLoader(new Filesystem(), $container['settings']['translations_path']);
+    // Register the Dutch translator (set to "en" for English)
+    $translator = new Translator($loader, "en");
+    return $translator;
 };
 
 $container['view'] = function($container) {
@@ -35,6 +47,9 @@ $container['view'] = function($container) {
      * Add flash message to view
      */
     $view->getEnvironment()->addGlobal('flash', $container->flash);
+	
+	// add translator functions to Twig
+    $view->addExtension(new TranslatorExtension($container->translator));
 
     return $view;
 };
@@ -46,6 +61,8 @@ $container['view'] = function($container) {
 //        return $container['view']->render($response->withStatus(404), 'error/404.twig');
 //    };
 //};
+
+
 
 $container['HomeController'] = function ($container) {
     return new App\Controllers\HomeController($container);
@@ -65,6 +82,10 @@ $container['validator'] = function () {
 
 $container['AuthController'] = function ($container) {
     return new App\Controllers\Auth\AuthController($container);
+};
+
+$container['QuestionController'] = function ($container) {
+    return new App\Controllers\QuestionController($container);
 };
 
 $container['csrf'] = function () {
