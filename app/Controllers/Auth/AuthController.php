@@ -55,9 +55,12 @@ class AuthController extends Controller
 	{
 		//Let's verify inputs
 		$validation = $this->validator->validate($request, [
-			'email' => v::noWhitespace()->notEmpty()->emailAvailable(),
-			'name' => v::notEmpty(),
-			'password' => v::notEmpty()
+			'email' => v::noWhitespace()->notEmpty()->emailAvailable()->email(),
+			'firstname' => v::notEmpty()->Alpha(),
+			'lastname' => v::notEmpty()->Alpha(),
+			'confirm_password' => v::noWhitespace()->notEmpty()->confirmPassword($request->getParam('password')),
+			'password' => v::noWhitespace()->notEmpty(),
+			'username' => v::notEmpty()->regex('/[^a-z\_.]/')->usernameAvailable()->length(1, 15),
 		]);
 
 		if($validation->failed()){
@@ -66,12 +69,16 @@ class AuthController extends Controller
 		}
 
 		//Nice passed validator!
+		//Creating user...
 		$user = User::create([
-			'name' => $request->getParam('name'),
-			'email' => $request->getParam('email'),
+			'email' =>  $request->getParam('email'),
+			'firstname' => ucfirst(strtolower($request->getParam('firstname'))),
+			'lastname' => ucfirst(strtolower($request->getParam('lastname'))),
+			'username' => $request->getParam('username'),
 			'password' => password_hash($request->getParam('password'), PASSWORD_DEFAULT),
 		]);
 
+        $this->container->flash->addMessage('nav-info', 'Account created.');
 		return $response
 				->withRedirect($this->router->pathFor('home'));
 	}
