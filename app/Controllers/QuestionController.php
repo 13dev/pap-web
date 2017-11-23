@@ -11,39 +11,67 @@ namespace App\Controllers;
 use App\Models\Question;
 use App\Models\User;
 use Respect\Validation\Validator as v;
+use App\Helpers\JsonResponse;
 
 class QuestionController extends Controller
 {
     public function getQuestion($request, $response)
     {
-        echo "<pre>";
+        $json = JsonResponse::build('1', 2, 4);
         //print_r(User::find(1)->questions()->get());
-        return "";
+        return $response->withJson($json, 200, JSON_UNESCAPED_UNICODE);
     }
+
     public function setQuestion($request, $response)
     {
-        //TODO: MUDAR O VALIDADOR, ESTE GUARDA NA SESSÃO, O MESMO NAO PODE SER UTILIZADO POR AJAX!
-        $validation = $this->validator->validate($request, [
-            'question' => v::notEmpty(),
-        ]);
 
-        if($validation->failed()){
-            //TODO: Mudar, retornar json estruturado...
-            return $response->withStatus(404);
+        $data = [
+            'text'      => $request->getParsedBodyParam('question'),
+            'id_from'   => ($this->auth->check()) ? $this->auth->user()->id : null,
+            'id_for'    => $request->getParsedBodyParam('reciver'),
+            'hidden'    => ($request->getParsedBodyParam('hidden') == 'true' || !$this->auth->check()) ? 1 : 0,
+            'read'      => 0,
+        ];
+
+         $json = [
+            'csrf' => [
+                $this->csrf->getTokenName(),
+                $this->csrf->getTokenValue(),
+            ]
+        ];
+
+        //Question validation
+        if (empty($data['text']) || is_null($data['text']))
+        {
+            return $response->withJson(
+                JsonResponse::build("error", $json, "The Question is not valid."),
+                200, JSON_UNESCAPED_UNICODE);
+
         }
 
-        Question::create([
-            'text' => $request->getParam('question'),
-            'id_from' => 1,
-            'id_for' => 1,
-            'hidden' => 0,
-            'points' => 1
-        ]);
+         $reciver = User::where('username', $data['id_for'])->first();
 
-        //TODO: MUDAR ESTRUTURA DO JSON, E PROCURAR SE É BOA PRATICA RETORNAR TOKENS DE CSRF
-        return json_encode([
-            $this->container->csrf->getTokenName(),
-            $this->container->csrf->getTokenValue(),
-        ]);
+         if(!$data['id_for'] || !$reciver)
+         {
+             // the question dont have a reciver!
+             return $response->withJson(
+                 JsonResponse::build("error", $json, "Internal Error please come back soon as possible."),
+                 200, JSON_UNESCAPED_UNICODE);
+         }
+
+         //update username to id
+         $data['id_for'] = $reciver->id;
+
+         //insert question
+         if(!Question::create($data))
+         {
+             return $response->withJson(
+                 JsonResponse::build("error", $json, "Internal Error, please come back soon as possible."),
+                 200, JSON_UNESCAPED_UNICODE);
+         }
+
+        return $response->withJson(
+            JsonResponse::build("success", $json, "Message send."),
+            200, JSON_UNESCAPED_UNICODE);
     }
 }
