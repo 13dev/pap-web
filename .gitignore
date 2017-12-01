@@ -2,3 +2,6 @@ vendor/
 psd/
 sql/
 .idea/
+*~
+*.swp
+*.swo

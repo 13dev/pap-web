@@ -42,7 +42,6 @@
     </div>
 </div>
     <div id="nav-message">
-<<<<<<< HEAD
         <!-- <div id="inner-message" class="alert alert-danger">
                 <div class="container">
                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
@@ -50,23 +49,10 @@
                     <strong>Message</strong>
                 </div>
             </div>
-=======
-        {% if flash.getMessage('nav-error') %}
-            <div id="inner-message" class="alert alert-danger">
-                <div class="container">
-                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                    <i class="fa fa-exclamation-triangle" aria-hidden="true">&nbsp;&nbsp;</i>
-                    <strong>{{ flash.getMessage('nav-error') | first }}</strong>
-                </div>
-            </div>
-        {% endif %}
-        {% if flash.getMessage('nav-success') %}
->>>>>>> 9fd7326416aa1322b963b84bcd0e596c9277a73a
             <div id="inner-message" class="alert alert-success">
                 <div class="container">
                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
                     <i class="fa fa-check-circle" aria-hidden="true">&nbsp;&nbsp;</i>
-<<<<<<< HEAD
                     <strong>Message</strong>
                 </div>
             </div>
@@ -78,20 +64,5 @@
                 </div>
             </div>
           -->
-=======
-                    <strong>{{ flash.getMessage('nav-success') | first }}</strong>
-                </div>
-            </div>
-        {% endif %}
-        {% if flash.getMessage('nav-info') %}
-            <div id="inner-message" class="alert alert-info">
-                <div class="container">
-                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                    <i class="fa fa-exclamation" aria-hidden="true">&nbsp;&nbsp;</i>
-                    <strong>{{ flash.getMessage('nav-info') | first }}</strong>
-                </div>
-            </div>
-        {% endif %}
->>>>>>> 9fd7326416aa1322b963b84bcd0e596c9277a73a
     </div>
 </nav>

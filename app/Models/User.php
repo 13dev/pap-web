@@ -26,7 +26,7 @@ class User extends Model {
 			'password' => password_hash($password, PASSWORD_DEFAULT),
 		]);
 	}
-	
+
     public function unreadQuestions()
     {
         return $this->questions()->where('read', 0);

@@ -11,11 +11,7 @@
                 <div class="avatar">
                     <img src="{{ base_url() }}/img/noavatar.png" class="img-rounded img-responsive">
                 </div>
-<<<<<<< HEAD
                 <div class="profile-name">
-=======
-                <div style=" position: absolute; margin-top: -40px; margin-left: 140px;">
->>>>>>> 9fd7326416aa1322b963b84bcd0e596c9277a73a
                     <h4>{{ user.firstname }} {{user.lastname }}</h4>
                 </div>
                 <div class="info">
@@ -40,13 +36,7 @@
                         <div class="col-md-4" style="padding-right: 0;">
                             <div class="profile-detail">
                                 <!-- profile detail -->
-<<<<<<< HEAD
                                 <div class="well-lg profile-sidebar profile-content-box">
-=======
-                                <div class="well-lg">
-                                  <div>
-                                    <h2>{{ user.firstname }} {{user.lastname }}</h2>
->>>>>>> 9fd7326416aa1322b963b84bcd0e596c9277a73a
                                     <p>This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
                                 </div>
                             </div>
@@ -73,51 +63,17 @@
                         </div>
                         <div class="col-md-8" style="padding-left: 0;">
                             <!-- content -->
-<<<<<<< HEAD
                            <div class="profile-margin">
                                {% if questions %}
                                    {% for question in questions %}
                                        <!-- Nested media object -->
                                        <ul class="media-list profile-question">
-=======
-                            <div id="send-question">
-                                <div class="well-lg">
-                                    <h3 style="text-align: center;">Make a simple Question :)</h3>
-                                    <div class="row">
-                                        <div class="col-md-10">
-                                            <div class="form-group {{ validationErrors.question ? 'has-error has-feedback' : '' }}">
-                                                <input name="question" id="question" class="form-control" />
-                                                {% if validationErrors.question %}
-                                                    <span class="help-block">{{ validationErrors.question | first }}</span>
-                                                    <span class="glyphicon glyphicon-remove form-control-feedback"></span>
-                                                {% endif %}
-                                            </div>
-                                            <div style="">
-                                                <label class="toggle">
-                                                    <input type="checkbox" id="toggle-hidden" {% if not auth.check %} disabled checked {% endif %}>
-                                                    <span class="handle"></span>
-                                                </label>
-                                                <label for="toggle-hidden" style="font-size: 20px; bottom:2px; position: absolute; margin-left: 10px;">Secret Question</label>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-2">
-                                            <button class="btn btn-primary pull-right" id="sendQuestion">Send</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                           <div class="well-lg">
-                               {% if questions %}
-                                   {% for question in questions %}
-                                       <ul class="media-list">
->>>>>>> 9fd7326416aa1322b963b84bcd0e596c9277a73a
                                            <li class="media">
                                                <a class="pull-left" href="#">
                                                    <img class="media-object img-rounded" src="{{ base_url() }}/img/noavatar.png" style="max-width:50px;">
                                                </a>
                                                <div class="media-body">
                                                    <h4 class="media-heading">
-<<<<<<< HEAD
                                                        {% if question.hidden %}
                                                            Anony
                                                        {% else %}
@@ -140,27 +96,6 @@
                                    {% else %}
                                    <h2>Este utilizador não possui perguntas com respostas.</h2>
                                {% endif %}
-=======
-                                                       {% if question.hidden == '1' %}
-                                                           Questão anonima
-                                                       {% else %}
-                                                           {{ question.user }}
-                                                       {% endif %}
-                                                   </h4>
-                                                   <p>{{ question.created_at }}</p>
-                                                   <p>{{ question.text }}</p>
-                                                   <!-- Nested media object -->
-
-                                                   <!-- Nested media object -->
-
-                                               </div>
-                                           </li>
-                                       </ul>
-                                   {% endfor %}
-                               {% endif %}
-
-
->>>>>>> 9fd7326416aa1322b963b84bcd0e596c9277a73a
                            </div>
                         </div>
                     </div>
