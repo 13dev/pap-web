@@ -8,17 +8,17 @@ use App\Models\User;
 /**
 * custom password validation
 */
-class MatchesPassword extends AbstractRule
+class ConfirmPassword extends AbstractRule
 {
-	protected $password;
+	protected $cPassword;
 
-	function __construct($password)
+	function __construct($cPassword)
 	{
-		$this->password = $password;
+		$this->cPassword = $cPassword;
 	}
 
 	public function validate ($input)
 	{
-		return password_verify($input, $this->password);
+		return $input === $this->cPassword;
 	}
 }

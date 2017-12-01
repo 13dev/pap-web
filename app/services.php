@@ -67,6 +67,14 @@ $container['AuthController'] = function ($container) {
     return new App\Controllers\Auth\AuthController($container);
 };
 
+$container['QuestionController'] = function ($container) {
+    return new App\Controllers\QuestionController($container);
+};
+
+$container['AnswerController'] = function ($container) {
+    return new App\Controllers\AnswerController($container);
+};
+
 $container['csrf'] = function () {
     return new \Slim\Csrf\Guard;
 };

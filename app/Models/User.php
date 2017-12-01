@@ -6,20 +6,39 @@ use Illuminate\Database\Eloquent\Model;
 
 class User extends Model {
 
-	protected $table = 'users';
+	protected $table = 'user';
 
 	protected $fillable = [
-		'name',
-		'email',
+		'username',
+		'firstname',
+		'lastname',
+        'email',
 		'password',
+		'avatar',
+		'points',
+		'likes',
+        'followers',
 	];
 
-	public $timestamps = false;
-
 	public function setPassword($password)
-	{
-		$this->update([
+    {
+		return $this->update([
 			'password' => password_hash($password, PASSWORD_DEFAULT),
 		]);
 	}
+
+    public function unreadQuestions()
+    {
+        return $this->questions()->where('read', 0);
+    }
+
+    public function readQuestions()
+    {
+        return $this->questions()->where('read', 1);
+    }
+
+    public function questions()
+    {
+        return $this->hasMany(Question::class,'id_for');
+    }
 }

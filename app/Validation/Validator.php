@@ -8,7 +8,7 @@ class Validator {
 
 	protected $errors;
 
-	public function validate($request, array $rules){
+	public function validate($request, array $rules, $session = true){
 
 		foreach ($rules as $field => $rule) {
 			try {
@@ -18,10 +18,16 @@ class Validator {
 			}
 		}
 
-		$_SESSION['validationErrors'] = $this->errors;
+        if($session)
+            $_SESSION['validationErrors'] = $this->getErrors();
 
 		return $this;
 	}
+
+	public function getErrors()
+    {
+        return $this->errors;
+    }
 
 	public function failed(){
 		return !empty($this->errors);

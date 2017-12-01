@@ -16,9 +16,27 @@ class Question extends Model {
 		'points',
 	];
 
+
+    public function questionsWithoutAnswer()
+    {
+        return $this->user()->questions()->whereDoesntHave('answer');
+    }
+
+    public function questionsWithAnswer()
+    {
+        return $this->user()->questions()->has('answer');
+    }
+
     public function user()
     {
-	    return $this->belongsTo(User::class,'id');
+	    return $this->belongsTo(User::class,'id_for');
     }
+
+    public function answer()
+    {
+        return $this->hasOne(Answer::class);
+    }
+
+
 
 }
