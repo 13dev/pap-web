@@ -1,6 +1,7 @@
 <?php
 
 use App\Twig\TranslatorExtension;
+use App\Twig\DumpExtension;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Translation\FileLoader;
 use Illuminate\Translation\Translator;
@@ -51,6 +52,9 @@ $container['view'] = function($container) {
 	// add translator functions to Twig
     $view->addExtension(new TranslatorExtension($container->translator));
 
+    // add var dumper ex
+    $view->addExtension(new DumpExtension);
+
     return $view;
 };
 
@@ -61,7 +65,6 @@ $container['view'] = function($container) {
 //        return $container['view']->render($response->withStatus(404), 'error/404.twig');
 //    };
 //};
-
 
 
 $container['HomeController'] = function ($container) {
