@@ -26,8 +26,7 @@ class User extends Model {
 			'password' => password_hash($password, PASSWORD_DEFAULT),
 		]);
 	}
-
-<<<<<<< HEAD
+	
     public function unreadQuestions()
     {
         return $this->questions()->where('read', 0);
@@ -38,8 +37,6 @@ class User extends Model {
         return $this->questions()->where('read', 1);
     }
 
-=======
->>>>>>> 9fd7326416aa1322b963b84bcd0e596c9277a73a
     public function questions()
     {
         return $this->hasMany(Question::class,'id_for');
