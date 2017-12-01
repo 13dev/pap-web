@@ -23,7 +23,6 @@ class ProfileController extends Controller
 		return $this->view->render($response, 'profile/get.twig', [
 		    'user' => $user,
             'questions' => $questionsWithAnswer,
-
         ]);
 	}
 }

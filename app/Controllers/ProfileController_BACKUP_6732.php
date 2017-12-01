@@ -17,13 +17,22 @@ class ProfileController extends Controller
 		}
 
 		$user = User::where('username', $args['username'])->first();
+<<<<<<< HEAD
 
 		$questionsWithAnswer = $user->questions()->has('answer')->get();
 
 		return $this->view->render($response, 'profile/get.twig', [
 		    'user' => $user,
             'questions' => $questionsWithAnswer,
+=======
 
+
+		$questions = $user->questions()->get();
+
+		return $this->view->render($response, 'profile/get.twig', [
+		    'user' => $user,
+            'questions' => $questions,
+>>>>>>> 9fd7326416aa1322b963b84bcd0e596c9277a73a
         ]);
 	}
 }

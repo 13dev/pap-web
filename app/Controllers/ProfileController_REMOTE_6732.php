@@ -3,7 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\User;
-use App\Models\Question;
+
 /**
 * Profile of user
 */
@@ -18,12 +18,12 @@ class ProfileController extends Controller
 
 		$user = User::where('username', $args['username'])->first();
 
-		$questionsWithAnswer = $user->questions()->has('answer')->get();
+
+		$questions = $user->questions()->get();
 
 		return $this->view->render($response, 'profile/get.twig', [
 		    'user' => $user,
-            'questions' => $questionsWithAnswer,
-
+            'questions' => $questions,
         ]);
 	}
 }

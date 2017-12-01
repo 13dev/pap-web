@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>{% block title %}Askpit | Ask - it! :) {% endblock %}</title>
+	<title>{{ trans('messages.title') }} {% block title %}  Askpit | Ask - it! :) {% endblock %}</title>
 	
 	<!--<link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,800,700,400italic,600italic,700italic,800italic,300italic" rel="stylesheet" type="text/css">-->
 
@@ -41,7 +41,11 @@
 			$("#sendQuestion").click(function(){
 				$.ajax({
 					method: 'POST',
+<<<<<<< HEAD
 					url: '{{ path_for('question.insert') }}',
+=======
+					url: '{{ path_for('q.insert') }}',
+>>>>>>> 9fd7326416aa1322b963b84bcd0e596c9277a73a
 					data: {
 					    'csrf_name': $("input[name='csrf_name']").attr("value"),
 						'csrf_value': $("input[name='csrf_value']").attr("value"),
@@ -64,6 +68,7 @@
                                 break;
 							case "success":
                                 flash.init($("#nav-message"),data.message, "success", true);
+<<<<<<< HEAD
 
 							    break;
 							default:
@@ -76,6 +81,16 @@
                         $("input[name='csrf_value']").attr("value", data.data.csrf[1]);
 
                         $("#question").val("");
+=======
+							    break;
+						}
+
+
+                        $("input[name='csrf_name']").attr("value", data.data.csrf[0]);
+                        $("input[name='csrf_value']").attr("value", data.data.csrf[1]);
+
+                        $("#question").attr("value", "");
+>>>>>>> 9fd7326416aa1322b963b84bcd0e596c9277a73a
 					}
 				})
 			});

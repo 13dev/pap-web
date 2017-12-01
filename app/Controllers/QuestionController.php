@@ -17,7 +17,6 @@ class QuestionController extends Controller
 {
     public function getQuestion($request, $response)
     {
-
         $user = $this->auth->user();
         $questions = $user->questions()->whereDoesntHave('answer')->get();
 
@@ -61,6 +60,7 @@ class QuestionController extends Controller
         ];
 
          if(!$reciver = User::where('username', $data['id_for'])->firstOrFail())
+
          {
              // the question dont have a reciver!
              return $response->withJson(

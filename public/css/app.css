@@ -202,8 +202,11 @@ a:focus
     background-color: #E6E9ED;
     width: 100%;
     border-top: 2px solid #3BAFDA;
+<<<<<<< HEAD
     border-bottom: 1px solid #F5F7FA;
     box-shadow: inset rgba(0, 0, 0, 0.21) 0px 0px 12px;
+=======
+>>>>>>> 9fd7326416aa1322b963b84bcd0e596c9277a73a
 }
 
 .info > .row {
@@ -227,6 +230,7 @@ a:focus
     border-bottom-right-radius: 0px;
     border-bottom-left-radius: 0px;
 }
+<<<<<<< HEAD
 
 .profile-name {
     position: absolute;
@@ -284,3 +288,5 @@ a:focus
     display: inline-block;
     float: right;
 }
+=======
+>>>>>>> 9fd7326416aa1322b963b84bcd0e596c9277a73a
