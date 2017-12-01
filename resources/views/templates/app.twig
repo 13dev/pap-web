@@ -4,14 +4,15 @@
 	<meta charset="utf-8">
 	<title>{% block title %}Askpit | Ask - it! :) {% endblock %}</title>
 	
-	<link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,800,700,400italic,600italic,700italic,800italic,300italic" rel="stylesheet" type="text/css">
+	<!--<link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,800,700,400italic,600italic,700italic,800italic,300italic" rel="stylesheet" type="text/css">-->
 
-	<link href="//netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="{{ base_url() }}/css/bootstrap.min.css">
 	<link rel="stylesheet" href="{{ base_url() }}/css/bootflat.min.css">
 	<link rel="stylesheet" href="{{ base_url() }}/css/app.css">
 	<link rel="stylesheet" href="{{ base_url() }}/css/anim.css">
+	<link rel="stylesheet" href="{{ base_url() }}/css/font-awesome.min.css">
 
-	<script src="https://use.fontawesome.com/aea4645b20.js"></script>
+	<!--<script src="https://use.fontawesome.com/aea4645b20.js"></script> -->
 
 </head>
 <body>
@@ -21,32 +22,87 @@
 	<div class="container" style="padding-top: 30px;">
 		{% block content %}{% endblock %}
 	</div>
-		
-	<!-- footer -->
-	{% include 'templates/partials/footer.twig' %}
 
+	<!-- footer -->
+    {% include 'templates/partials/footer.twig' %}
 
 	<!-- Javascript -->
 	<!-- jquery -->
-	<script src="//code.jquery.com/jquery-2.2.4.min.js"></script>
-	<script src="//netdna.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<script src="{{ base_url() }}/js/jquery.min.js"></script>
+	<script src="{{ base_url() }}/js/bootstrap.min.js"></script>
 
 	<!-- bootflat -->
 	<script src="{{ base_url() }}/js/icheck.min.js"></script>
 	<script src="{{ base_url() }}/js/jquery.fs.selecter.min.js"></script>
 	<script src="{{ base_url() }}/js/jquery.fs.stepper.min.js"></script>
-	<script type="text/javascript">
-		$(document).ready(function(){
-			//if div exists
-			if(document.getElementById("nav-message") !== null)
-			{
-				/**
-				 * Fade out the message
-				 */
-				$("#nav-message").delay(3500).fadeOut("slow");
-			}
-			
-		});
+	<script src="{{ base_url() }}/js/main.js"></script>
+	<script>
+		(function($){
+			$("#sendQuestion").click(function(){
+				$.ajax({
+					method: 'POST',
+					url: '{{ path_for('question.insert') }}',
+					data: {
+					    'csrf_name': $("input[name='csrf_name']").attr("value"),
+						'csrf_value': $("input[name='csrf_value']").attr("value"),
+						'question': $("#question").val(),
+						'hidden': $("#toggle-hidden").is(":checked"),
+						'reciver': $("input[name='username']").attr("value")
+					},
+					success: function (data) {
+					    //var data = JSON.parse(data);
+
+						if(typeof data.data.csrf == 'undefined')
+						{
+						    alert("Erro interno do servidor");
+						    redirect(window.location.href);
+						}
+
+						switch (data.success) {
+							case "error":
+                                flash.init($("#nav-message"),data.message, "danger", true);
+                                break;
+							case "success":
+                                flash.init($("#nav-message"),data.message, "success", true);
+
+							    break;
+							default:
+                                flash.init($("#nav-message"),data.message, "danger", true);
+							    break;
+
+						}
+
+                        $("input[name='csrf_name']").attr("value", data.data.csrf[0]);
+                        $("input[name='csrf_value']").attr("value", data.data.csrf[1]);
+
+                        $("#question").val("");
+					}
+				})
+			});
+
+            $('.checkbox input').iCheck({
+                checkboxClass: 'icheckbox_flat',
+                increaseArea: '100%'
+            });
+		})($);
 	</script>
+
+    {% if flash.getMessages() %}
+		<script>
+			(function($){
+                {% if flash.getMessage('nav-info') %}
+					flash.init($("#nav-message"),"{{ flash.getMessage('nav-info') | first }}", "info", true);
+				{% endif %}
+
+                {% if flash.getMessage('nav-danger') %}
+                	flash.init($("#nav-message"),"{{ flash.getMessage('nav-danger') | first }}", "danger", true);
+                {% endif %}
+
+                {% if flash.getMessage('nav-success') %}
+                	flash.init($("#nav-message"),"{{ flash.getMessage('nav-success') | first }}", "success", true);
+                {% endif %}
+			})($);
+		</script>
+    {% endif %}
 </body>
 </html>

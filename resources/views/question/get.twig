@@ -1,0 +1,34 @@
+{% extends 'templates/app.twig' %}
+{% block content %}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="well">
+                {% if questions %}
+                    {% for question in questions %}
+                        <!-- Nested media object -->
+                        <ul class="media-list">
+                            <li class="media">
+                                <a class="pull-left" href="#">
+                                    <img class="media-object img-rounded" src="{{ base_url() }}/img/noavatar.png" style="max-width:50px;">
+                                </a>
+                                <div class="media-body">
+                                    <h4 class="media-heading">
+                                        {% if question.hidden %}
+                                            Questão anonima
+                                        {% else %}
+                                            {{ question.user.username }}
+                                        {% endif %}
+                                    </h4>
+                                    <p>{{ question.created_at }}</p>
+                                    <p>{{ question.text }}</p>
+                                </div>
+                            </li>
+                        </ul>
+                        <!-- Nested media object -->
+                        <hr/>
+                    {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

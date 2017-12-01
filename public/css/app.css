@@ -4,12 +4,8 @@ body
     font-size: 14px;
     line-height: 1.42857143;
 
-    background: url(../img/background.png);
+    background: url("../img/background.png") repeat center center fixed;
     background-color: rgb(241, 242, 246);
-    -webkit-background-size: cover;
-       -moz-background-size: cover;
-         -o-background-size: cover;
-            background-size: cover;
 }
 
 .navbar-default
@@ -67,6 +63,10 @@ a:focus
 
     color: #434a54!important;
     border-bottom: solid 2px #5d9cec;
+}
+
+.well {
+    padding: 4px;
 }
 
 /**
@@ -186,21 +186,24 @@ a:focus
 .avatar {
     position: absolute;
     margin-left: 30px;
-    min-height: 30%;
-    margin-top: -50px;
+    width: 30%;
+    min-width: 200px;
+    margin-top: -5%;
 }
 
 .avatar > img {
     border-radius: 50%;
-    border: 2px solid #3BAFDA;
-    max-height: 100px;
+    border: 2px solid #F5F7FA;
+    max-width: 30%;
 }
 
 .info {
-  min-height: 50px;
-  background-color: #E6E9ED;
-  width: 100%;
-  border-top: 2px solid #3BAFDA;
+    min-height: 50px;
+    background-color: #E6E9ED;
+    width: 100%;
+    border-top: 2px solid #3BAFDA;
+    border-bottom: 1px solid #F5F7FA;
+    box-shadow: inset rgba(0, 0, 0, 0.21) 0px 0px 12px;
 }
 
 .info > .row {
@@ -218,4 +221,66 @@ a:focus
 .info > .row > .col-md-4 > h4 {
   display: inline-block;
   font-size: 16px;
+}
+.cover > img {
+    width: 100%;
+    border-bottom-right-radius: 0px;
+    border-bottom-left-radius: 0px;
+}
+
+.profile-name {
+    position: absolute;
+    margin-top: -40px;
+    margin-left: 140px;
+}
+
+.profile-name > h4 {
+    color: #F5F7FA;
+    font-size: 22px;
+    letter-spacing: 0.05em;
+    text-shadow: #000 0px 0px 10px;
+}
+
+.profile-sidebar {
+    margin: 10px 0 10px 10px;
+}
+
+.profile-content-box {
+    box-shadow: inset rgba(0, 0, 0, 0.16) 0px 0px 10px 0px;
+    border: 1px solid #f5f7fa;
+    border-radius: 0px;
+}
+
+.profile-margin {
+    margin: 10px;
+}
+
+#send-question > div {
+    padding: 20px;
+}
+#question {
+    margin-bottom:10px;
+}
+
+.profile-question:not(:last-child) {
+    border-bottom: 2px solid #fff;
+}
+
+.profile-question {
+    padding: 10px 10px 0 10px;
+    background-color: #ffffff;
+}
+
+.profile-question > li > a > img {
+    max-width: 50px;
+    border-radius: 50%;
+}
+
+.profile-question > li > div > h4 {
+    display: inline-block;
+}
+
+.profile-question > li > div > p:first-of-type {
+    display: inline-block;
+    float: right;
 }
