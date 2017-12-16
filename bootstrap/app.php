@@ -31,6 +31,7 @@ $app->add(new \App\Middleware\ValidationErrorsMiddleware($container));
 $app->add(new \App\Middleware\OldInputMiddleware($container));
 $app->add(new \App\Middleware\CsrfMiddleware($container));
 $app->add($container->csrf);
+$app->add(new \MikeScott\Minifier\Minifier());
 
 //Add custom rules
 v::with('App\\Validation\\Rules\\');

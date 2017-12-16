@@ -25,7 +25,13 @@ $config = [
             'collation'     => 'utf8_unicode_ci',
             'prefix'        => '',
         ],
-        'translations_path' => __DIR__ . '/Translations/' // path to the translation files
+
+        'translations_path' => __DIR__ . '/Translations/', // path to the translation files
+
+        // app configurations..
+        'app' => [
+            'NAME' => 'Askpit',
+        ],
     ],
 
 ];
