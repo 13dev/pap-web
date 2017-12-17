@@ -6,6 +6,18 @@ use Illuminate\Filesystem\Filesystem;
 use Illuminate\Translation\FileLoader;
 use Illuminate\Translation\Translator;
 
+//TODO: Active in production
+//Override the default Not Found Handler
+//$container['notFoundHandler'] = function ($container) {
+//    return function ($request, $response) use ($container) {
+//        return $container['view']->render($response->withStatus(404), 'error/404.twig');
+//    };
+//};
+
+/*
+ * Services
+ */
+
 $container['db'] = function() use ($capsule) {
     return $capsule;
 };
@@ -58,14 +70,18 @@ $container['view'] = function($container) {
     return $view;
 };
 
-//TODO: Active in production
-//Override the default Not Found Handler
-//$container['notFoundHandler'] = function ($container) {
-//    return function ($request, $response) use ($container) {
-//        return $container['view']->render($response->withStatus(404), 'error/404.twig');
-//    };
-//};
+$container['csrf'] = function () {
+    return new \Slim\Csrf\Guard;
+};
 
+$container['validator'] = function () {
+    return new App\Validation\Validator;
+};
+
+
+/*
+ * Controllers
+ */
 
 $container['HomeController'] = function ($container) {
     return new App\Controllers\HomeController($container);
@@ -77,10 +93,6 @@ $container['PasswordController'] = function ($container) {
 
 $container['ProfileController'] = function ($container) {
     return new App\Controllers\ProfileController($container);
-};
-
-$container['validator'] = function () {
-    return new App\Validation\Validator;
 };
 
 $container['AuthController'] = function ($container) {
@@ -99,7 +111,5 @@ $container['TestController'] = function ($container) {
     return new App\Controllers\TestController($container);
 };
 
-$container['csrf'] = function () {
-    return new \Slim\Csrf\Guard;
-};
+
 
