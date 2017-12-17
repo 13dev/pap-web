@@ -14,7 +14,7 @@ date_default_timezone_set('UTC');
 
 $config = [
     'settings' => [
-        'displayErrorDetails' => true,
+        'displayErrorDetails' => getenv('APP_DEBUG') === 'true',
         //'addContentLengthHeader' => false,
         'db' => [
             'driver'        => getenv('DB_TYPE'),
@@ -27,7 +27,15 @@ $config = [
             'prefix'        => '',
         ],
 
+        'app' => [
+            'name' => getenv('APP_NAME')
+        ],
+
         'translations_path' => __DIR__ . '/Translations/', // path to the translation files
+
+        'views' => [
+            'cache' => getenv('VIEW_CACHE_DISABLED') === 'true' ? false : __DIR__ . '/../storage/views'
+        ],
 
     ],
 

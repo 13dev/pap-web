@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "c59596d32bdc16e411ef315854ddcfcb",
+    "content-hash": "8fe1a235b557d7ce4ad764e77dc5f22b",
     "packages": [
         {
             "name": "container-interop/container-interop",
@@ -402,6 +402,97 @@
             "description": "The Illuminate Translation package.",
             "homepage": "https://laravel.com",
             "time": "2017-10-15T14:53:40+00:00"
+        },
+        {
+            "name": "mikescott/slim3-minifier",
+            "version": "v2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mikescott/slim3-minifier.git",
+                "reference": "8bc02dc7318d1d43d1a1e2a3906ce4ceba4d75df"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mikescott/slim3-minifier/zipball/8bc02dc7318d1d43d1a1e2a3906ce4ceba4d75df",
+                "reference": "8bc02dc7318d1d43d1a1e2a3906ce4ceba4d75df",
+                "shasum": ""
+            },
+            "require": {
+                "mrclay/minify": "2.*",
+                "php": ">=5.5.0",
+                "slim/slim": ">=3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "MikeScott\\Minifier": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Michael Scott",
+                    "homepage": "https://github.com/mikescott/"
+                }
+            ],
+            "description": "A middleware for Slim 3 that minifies HTML output",
+            "homepage": "https://github.com/mikescott/slim3-minifier",
+            "keywords": [
+                "html",
+                "minifier",
+                "minify",
+                "slim",
+                "slim3"
+            ],
+            "time": "2017-03-05T16:37:25+00:00"
+        },
+        {
+            "name": "mrclay/minify",
+            "version": "2.3.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mrclay/minify.git",
+                "reference": "1928e89208d28e91427b2f13b67acdbd8cd01ac9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mrclay/minify/zipball/1928e89208d28e91427b2f13b67acdbd8cd01ac9",
+                "reference": "1928e89208d28e91427b2f13b67acdbd8cd01ac9",
+                "shasum": ""
+            },
+            "require": {
+                "ext-pcre": "*",
+                "php": ">=5.2.1"
+            },
+            "require-dev": {
+                "tubalmartin/cssmin": "~2.4.8"
+            },
+            "suggest": {
+                "tubalmartin/cssmin": "Support minify with CSSMin (YUI PHP port)"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "min/lib/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Stephen Clay",
+                    "email": "steve@mrclay.org",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Minify is a PHP5 app that helps you follow several rules for client-side performance. It combines multiple CSS or Javascript files, removes unnecessary whitespace and comments, and serves them with gzip encoding and optimal client-side cache headers",
+            "homepage": "http://code.google.com/p/minify/",
+            "time": "2017-11-03T21:04:01+00:00"
         },
         {
             "name": "nesbot/carbon",

@@ -28,7 +28,7 @@ $container['translator'] = function ($container) {
 $container['view'] = function($container) {
     
     $view = new \Slim\Views\Twig(__DIR__ . '/../resources/views', [
-        'cache' => false,
+        'cache' => $container->settings['views']['cache'],
     ]);
 
     $view->addExtension(new \Slim\Views\TwigExtension(

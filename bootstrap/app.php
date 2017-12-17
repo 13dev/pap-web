@@ -6,15 +6,18 @@ session_start();
 
 require __DIR__ . '/../vendor/autoload.php';
 
+//load .env file
+try {
+    (new Dotenv\Dotenv(__DIR__ . '/../', '.env'))->load();
+} catch (Dotenv\Exception\InvalidPathException $e) {
+    //TODO: Change it later
+    die($e->getMessage());
+}
+
 //config
 require __DIR__ . '/../app/config.php';
 
-//load .env file
-$dotenv = new \Dotenv\Dotenv(__DIR__.'/../');
-$dotenv->load();
-
 $app = new \Slim\App($config);
-
 
 $container = $app->getContainer();
 

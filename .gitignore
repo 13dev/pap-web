@@ -6,3 +6,4 @@ sql/
 *.swp
 *.swo
 .env
+!storage/views/.gitkeep

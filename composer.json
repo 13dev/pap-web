@@ -8,7 +8,8 @@
         "slim/flash": "^0.2.0",
         "illuminate/translation": "^5.5",
         "symfony/var-dumper": "^4.0",
-        "vlucas/phpdotenv": "^2.4"
+        "vlucas/phpdotenv": "^2.4",
+        "mikescott/slim3-minifier": "2.*"
     },
     "autoload": {
     	"psr-4": {
