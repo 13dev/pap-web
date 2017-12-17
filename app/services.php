@@ -83,33 +83,13 @@ $container['validator'] = function () {
  * Controllers
  */
 
-$container['HomeController'] = function ($container) {
-    return new App\Controllers\HomeController($container);
-};
-
-$container['PasswordController'] = function ($container) {
-    return new App\Controllers\Auth\PasswordController($container);
-};
-
-$container['ProfileController'] = function ($container) {
-    return new App\Controllers\ProfileController($container);
-};
-
-$container['AuthController'] = function ($container) {
-    return new App\Controllers\Auth\AuthController($container);
-};
-
-$container['QuestionController'] = function ($container) {
-    return new App\Controllers\QuestionController($container);
-};
-
-$container['AnswerController'] = function ($container) {
-    return new App\Controllers\AnswerController($container);
-};
-
-$container['TestController'] = function ($container) {
-    return new App\Controllers\TestController($container);
-};
-
+new \App\Base\ControllerRegistor($container, [
+    'App\Controllers\ProfileController',
+    'App\Controllers\HomeController',
+    'App\Controllers\Auth\PasswordController',
+    'App\Controllers\Auth\AuthController',
+    'App\Controllers\QuestionController',
+    'App\Controllers\TestController',
+]);
 
 
