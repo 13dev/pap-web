@@ -10,17 +10,18 @@ use Symfony\Component\VarDumper\Dumper\CliDumper;
 use Symfony\Component\VarDumper\VarDumper;
 use Symfony\Component\VarDumper\Dumper\HtmlDumper;
 
+date_default_timezone_set('UTC');
 
 $config = [
     'settings' => [
         'displayErrorDetails' => true,
         //'addContentLengthHeader' => false,
         'db' => [
-            'driver'        => 'mysql',
-            'host'          => 'localhost',
-            'username'      => 'root',
-            'database'      => 'askpit',
-            'password'      => '',
+            'driver'        => getenv('DB_TYPE'),
+            'host'          => getenv('DB_HOST'),
+            'username'      => getenv('DB_USERNAME'),
+            'database'      => getenv('DB_NAME'),
+            'password'      => getenv('DB_PASSWORD'),
             'charset'       => 'utf8',
             'collation'     => 'utf8_unicode_ci',
             'prefix'        => '',
@@ -28,10 +29,6 @@ $config = [
 
         'translations_path' => __DIR__ . '/Translations/', // path to the translation files
 
-        // app configurations..
-        'app' => [
-            'NAME' => 'Askpit',
-        ],
     ],
 
 ];
