@@ -9,6 +9,10 @@ require __DIR__ . '/../vendor/autoload.php';
 //config
 require __DIR__ . '/../app/config.php';
 
+//load .env file
+$dotenv = new \Dotenv\Dotenv(__DIR__.'/../');
+$dotenv->load();
+
 $app = new \Slim\App($config);
 
 

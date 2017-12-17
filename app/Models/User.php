@@ -41,4 +41,9 @@ class User extends Model {
     {
         return $this->hasMany(Question::class,'id_for');
     }
+
+    public function likes()
+    {
+        return $this->belongsToMany(Question::class, 'questionlike', 'user_id', 'question_id');
+    }
 }

@@ -37,6 +37,11 @@ class Question extends Model {
         return $this->hasOne(Answer::class);
     }
 
+    public function likes()
+    {
+        return $this->belongsToMany(User::class, 'questionlike');
+    }
+
 
 
 }

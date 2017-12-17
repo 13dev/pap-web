@@ -47,3 +47,7 @@ $app->group('/answer', function () use($container) {
     //$this->post('/insert', 'AnswerController:setAnswer')->setName('answer.insert');
     $this->get('/get', 'AnswerController:getAnswer')->setName('answer.get');
 });
+
+$app->group('/test', function () use($container) {
+    $this->get('/like', 'TestController:test');
+});
